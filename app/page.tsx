@@ -43,9 +43,11 @@ export default function Home() {
           Hey there!
         </h1>
         <p className="w-5/6 md:w-2/3 text-center text-xl md:text-2xl lg:text-3xl xl:text-4xl font-sans text-white">
-          I'm <span className="font-semibold">Allaa Eddine</span>, your friendly
+          {`I'm ${(
+            <span className="font-semibold">Allaa Eddine</span>
+          )}, your friendly
           neighbourhood full-stack developer, navigating the vast and exciting
-          realms of code.
+          realms of code.`}
         </p>
         <div className="w-auto h-10 flex justify-center items-center gap-5">
           <Link href={'https://github.com/A-AllaaEddine'} target="_blank">
@@ -259,7 +261,7 @@ export default function Home() {
         bg-black bg-opacity-50 p-8 md:p-20 rounded-lg"
         >
           <h1 className="text-xl md:text-3xl lg:text-4xl xl:text-7xl font-bold font-sans text-white text-center">
-            Let's talk more about your project.
+            {`Let's talk more about your project.`}
           </h1>
 
           <p className="text-transparent bg-clip-text text-md md:text-xl lg:text-2xl xl:text-3xl font-bold inline-block bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-2 rounded-full">
