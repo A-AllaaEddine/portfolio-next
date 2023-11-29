@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     description:
       "I'am Allaa Eddine, a Full-Stack Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.",
   },
+  metadataBase: new URL(process.env.BASEURL!),
 };
 
 export default function Home() {
