@@ -28,7 +28,12 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'A-AllaaEddine',
   description:
-    'm Allaa Eddine, your friendly neighbourhood full-stack developer, navigating the vast and exciting realms of code',
+    "I'm Allaa Eddine, a Full-Stack Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.",
+  openGraph: {
+    title: 'A-AllaaEddine',
+    description:
+      "I'am Allaa Eddine, a Full-Stack Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.",
+  },
 };
 
 export default function Home() {
@@ -44,9 +49,9 @@ export default function Home() {
         </h1>
         <p className="w-5/6 md:w-2/3 text-center text-xl md:text-2xl lg:text-3xl xl:text-4xl font-sans text-white">
           I am
-          <span className="font-semibold"> Allaa Eddine</span>, your friendly
-          neighbourhood full-stack developer, navigating the vast and exciting
-          realms of code.
+          <span className="font-semibold"> Allaa Eddine</span>, a Full-Stack
+          Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for
+          crafting efficient and elegant web solutions.
         </p>
         <div className="w-auto h-10 flex justify-center items-center gap-5">
           <Link href={'https://github.com/A-AllaaEddine'} target="_blank">
