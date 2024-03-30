@@ -35,6 +35,9 @@ export const metadata: Metadata = {
       "I'am Allaa Eddine, a Full-Stack Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.",
   },
   metadataBase: new URL(process.env.BASEURL!),
+  other: {
+    'google-site-verification': 'uv3qes_1CKohE0BiAcemlqonc530apiuQ7e6EfT-MSs',
+  },
 };
 
 export default function Home() {
