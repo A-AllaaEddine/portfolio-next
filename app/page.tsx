@@ -1,5 +1,8 @@
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
+import FullAuthAppThumbnail from '@/public/FullAuth_app_thumbnail.png';
+import BenyankomAppThumbnail from '@/public/Benyankom_app_thumbnail.png';
+import WinakolAppThumbnail from '@/public/Winakol_app_thumbnail.png';
 import BenyankomThumbnail from '@/public/Benyankom_thumbnail.png';
 import CoStudyThumbnail from '@/public/CoStudy_thumbnail.png';
 import FirebaseIcon from '@/public/firebase.svg';
@@ -174,12 +177,12 @@ export default function Home() {
       <div
         id="projects"
         className="w-full min-h-screen bg-cover
-        flex flex-col justify-center items-center gap-32"
+        flex flex-col justify-center items-center gap-10 py-20"
       >
         <h1 className="text-2xl md:text-4xl lg:text-4xl xl:text-7xl font-bold font-sans text-white">
           Projects
         </h1>
-
+        <p className="text-white text-xl font-semibold">Websites</p>
         <div className="w-auto h-auto flex flex-wrap justify-center items-center gap-16">
           <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
             <CardHeader>
@@ -192,7 +195,7 @@ export default function Home() {
                 height={100}
                 unoptimized
                 priority
-                className="w-full h-auto"
+                className="w-full h-52"
               />
             </CardHeader>
             <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
@@ -212,10 +215,11 @@ export default function Home() {
                 A platform to connect clients with skilled craftsmen in Algeria.
               </p>
             </CardContent>
-            <CardFooter className="w-full h-10 flex justify-start items-center gap-3">
+            <CardFooter className="w-full h-auto flex flex-wrap justify-start items-center gap-3">
               <p className="text-[#fa4d61]">#nextjs</p>
               <p className="text-[#00BDF9]">#tailwindcss</p>
               <p className="text-[#05BA79]">#mongodb</p>
+              <p className="text-[#ab6bff]">#fullauth</p>
             </CardFooter>
           </Card>
           <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
@@ -229,7 +233,7 @@ export default function Home() {
                 height={100}
                 unoptimized
                 priority
-                className="w-full h-auto"
+                className="w-full h-52"
               />
             </CardHeader>
             <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
@@ -249,10 +253,134 @@ export default function Home() {
                 A platform that let students study together in a shared session.
               </p>
             </CardContent>
-            <CardFooter className="w-full h-10 flex justify-start items-center gap-3">
+            <CardFooter className="w-full h-auto flex flex-wrap justify-start items-center gap-3">
               <p className="text-[#fa4d61]">#nextjs</p>
               <p className="text-[#00BDF9]">#tailwindcss</p>
               <p className="text-[#05BA79]">#mongodb</p>
+              <p className="text-[#ab6bff]">#fullauth</p>
+            </CardFooter>
+          </Card>
+        </div>
+        <p className="text-white text-xl font-semibold">Apps</p>
+        <div className="w-auto h-auto flex flex-wrap justify-center items-center gap-16">
+          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
+            <CardHeader>
+              {/* <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription> */}
+              <Image
+                src={BenyankomAppThumbnail}
+                alt="benyankom app"
+                width={100}
+                height={100}
+                unoptimized
+                priority
+                className="w-full h-48 object-contain bg-white rounded-xl"
+              />
+            </CardHeader>
+            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
+              <div className="w-full h-10 flex justify-between items-center">
+                <p className="text-2xl text-white font-bold">Benyankom App</p>
+                <Link
+                  href={
+                    'https://play.google.com/store/apps/details?id=com.benyankom.app&pli=1'
+                  }
+                  target="_blank"
+                  className="w-auto h-8 flex justify-center items-center gap-2
+                hover:cursor-pointer text-white hover:bg-white hover:text-black rounded-xl px-2"
+                >
+                  <p className="">visit</p>
+                  <MdInsertLink className="w-8 h-8 " />
+                </Link>
+              </div>
+              <p className="text-md  text-white">
+                An App to connect clients with skilled craftsmen in Algeria.
+              </p>
+            </CardContent>
+            <CardFooter className="w-full h-auto flex  flex-wrap justify-start items-center gap-3">
+              <p className="text-[#fa4d61]">#reactnative</p>
+              <p className="text-[#00BDF9]">#nativewind</p>
+              <p className="text-[#ab6bff]">#fullauth</p>
+            </CardFooter>
+          </Card>
+          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
+            <CardHeader>
+              {/* <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription> */}
+              <Image
+                src={WinakolAppThumbnail}
+                alt="Winakol"
+                width={100}
+                height={100}
+                unoptimized
+                priority
+                className="w-full h-48 object-contain bg-white rounded-xl"
+              />
+            </CardHeader>
+            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
+              <div className="w-full h-10 flex justify-between items-center">
+                <p className="text-2xl text-white font-bold">Winakol</p>
+                <Link
+                  href={
+                    'https://play.google.com/store/apps/details?id=com.winnakol.app'
+                  }
+                  target="_blank"
+                  className="w-auto h-8 flex justify-center items-center gap-2
+                hover:cursor-pointer  text-white hover:bg-white hover:text-black rounded-xl px-2"
+                >
+                  <p className="">visit</p>
+                  <MdInsertLink className="w-8 h-8 " />
+                </Link>
+              </div>
+              <p className="text-md  text-white">
+                An app that let users browse through thousands of restaurants
+                and dishes.
+              </p>
+            </CardContent>
+            <CardFooter className="w-full h-10 flex justify-start items-center gap-3">
+              <p className="text-[#fa4d61]">#reactnative</p>
+              <p className="text-[#00BDF9]">#nativewind</p>
+              <p className="text-[#ab6bff]">#fullauth</p>
+            </CardFooter>
+          </Card>
+        </div>
+        <p className="text-white text-xl font-semibold">Libraries</p>
+        <div className="w-auto h-auto flex flex-wrap justify-center items-center gap-16">
+          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
+            <CardHeader>
+              {/* <CardTitle>Card Title</CardTitle>
+              <CardDescription>Card Description</CardDescription> */}
+              <Image
+                src={FullAuthAppThumbnail}
+                alt="fullauth"
+                width={100}
+                height={100}
+                unoptimized
+                priority
+                className="w-full h-48  bg-white rounded-xl"
+              />
+            </CardHeader>
+            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
+              <div className="w-full h-10 flex justify-between items-center">
+                <p className="text-2xl text-white font-bold">FullAuth</p>
+                <Link
+                  href={'https://full-auth.vercel.app/introduction'}
+                  target="_blank"
+                  className="w-auto h-8 flex justify-center items-center gap-2
+                hover:cursor-pointer text-white hover:bg-white hover:text-black rounded-xl px-2"
+                >
+                  <p className="">visit</p>
+                  <MdInsertLink className="w-8 h-8 " />
+                </Link>
+              </div>
+              <p className="text-md  text-white">
+                An auth library that supports authentication for both web and
+                mobile.
+              </p>
+            </CardContent>
+            <CardFooter className="w-full h-auto flex  flex-wrap justify-start items-center gap-3">
+              <p className="text-[#fa4d61]">#reactnative</p>
+              <p className="text-[#00BDF9]">#nativewind</p>
+              <p className="text-[#ab6bff]">#fullauth</p>
             </CardFooter>
           </Card>
         </div>
