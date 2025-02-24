@@ -49,7 +49,7 @@ const Navbar = () => {
         Contact
       </p>
       <Link
-        href="https://drive.google.com/file/d/1AUG6uxuvobeotXBvJT-Z6mU6ry_kB4_r/view?usp=sharing"
+        href="https://drive.google.com/file/d/1c78hDnlWrdlpF9z93byHvrrq9EpnhsVa/view?usp=sharing"
         target="_blank"
         className="text-[#A3A3A3] text-sm md:text-xl hover:text-white hover:cursor-pointer"
       >
