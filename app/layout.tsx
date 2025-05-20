@@ -1,27 +1,40 @@
-import BackToTop from '@/components/backtotop';
-import Navbar from '@/components/navbar';
-import { Montserrat } from 'next/font/google';
+import type React from 'react';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import { NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Navbar } from '@/components/navbar';
+import { Footer } from '@/components/footer';
+import { Toaster } from '@/components/ui/toaster';
 
-const montserrat: NextFontWithVariable = Montserrat({
-  weight: ['300', '400', '500', '600'],
+// Use Inter for a clean, modern font that works well on all devices
+const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-montserrat',
   display: 'swap',
 });
 
-export default async function RootLayout({
+export const metadata: Metadata = {
+  title: 'Allaa Eddine | Full-Stack Developer',
+  description:
+    'Full-Stack Developer specializing in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.',
+};
+
+export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="en" className={`${montserrat?.variable}`}>
-      <body>
-        <Navbar />
-        <main className="bg-[#100F0F]">{children}</main>
-        <BackToTop />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} bg-black text-white antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="dark">
+          <div className="flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );

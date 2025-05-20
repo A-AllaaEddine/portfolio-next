@@ -1,421 +1,239 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { ClientProjectCard } from '@/components/client-project-card';
+import { ContactForm } from '@/components/contact-form';
+import { HeroParallax } from '@/components/hero-parallax';
+import { SkillCard } from '@/components/skill-card';
+import { Button } from '@/components/ui/button';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import FullAuthAppThumbnail from '@/public/FullAuth_app_thumbnail.png';
-import BenyankomAppThumbnail from '@/public/Benyankom_app_thumbnail.png';
-import WinakolAppThumbnail from '@/public/Winakol_app_thumbnail.png';
-import BenyankomThumbnail from '@/public/Benyankom_thumbnail.png';
-import CoStudyThumbnail from '@/public/CoStudy_thumbnail.png';
+// images
+import { ProjectFilter } from '@/components/project-filter';
+import DockerIcon from '@/public/docker.svg';
 import FirebaseIcon from '@/public/firebase.svg';
-import JavascriptIcon from '@/public/javascript.svg';
+import FlavourFindThumbnail from '@/public/FlavourFind_thumbnail.png';
 import MongoDbIcon from '@/public/mongodb.svg';
 import NextIcon from '@/public/nextjs.svg';
 import NodeIcon from '@/public/nodejs02.svg';
+import ReactNativeIcon from '@/public/react-native.svg';
 import ReactIcon from '@/public/react.svg';
+import StayFinderThumbnail from '@/public/Stayfinder_thumbnail.png';
 import TailwindIcon from '@/public/tailwind.svg';
 import TypescriptIcon from '@/public/typescript.svg';
-
-import Image from 'next/image';
-
-import { MdInsertLink } from 'react-icons/md';
-
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-} from '@/components/ui/card';
-import Link from 'next/link';
-import MouseScroll from '@/components/MouseScroll';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'A-AllaaEddine',
-  description:
-    "I'm Allaa Eddine, a Full-Stack Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.",
-  openGraph: {
-    title: 'A-AllaaEddine',
-    description:
-      "I'am Allaa Eddine, a Full-Stack Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for crafting efficient and elegant web solutions.",
-  },
-  metadataBase: new URL(process.env.BASEURL!),
-  other: {
-    'google-site-verification': 'uv3qes_1CKohE0BiAcemlqonc530apiuQ7e6EfT-MSs',
-  },
-};
+import VercelIcon from '@/public/vercel.svg';
+import ProfileImage from '@/public/Profile.jpg';
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen flex flex-col justify-start items-center">
-      <div
-        id="top"
-        className="relative bg-[url('/home_bg.svg')] w-full md:h-screen bg-cover
-        flex flex-col justify-center items-center gap-20 mt-28 md:mt-0"
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section
+        id="home"
+        className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden"
       >
-        <h1 className="text-2xl md:text-4xl lg:text-4xl xl:text-7xl font-bold font-sans text-white">
-          Hey there!
-        </h1>
-        <p className="w-5/6 md:w-2/3 text-center text-xl md:text-2xl lg:text-3xl xl:text-4xl font-sans text-white">
-          I am
-          <span className="font-semibold"> Allaa Eddine</span>, a Full-Stack
-          Developer. I specialize in Next.js, TypeScript, and Tailwind CSS for
-          crafting efficient and elegant web solutions.
-        </p>
-        <div className="w-auto h-10 flex justify-center items-center gap-5">
-          <Link href={'https://github.com/A-AllaaEddine'} target="_blank">
-            <FaGithub className="w-8 h-8 md:w-10 md:h-10 hover:cursor-pointer text-white" />
-          </Link>
-          <Link
-            href={'https://www.linkedin.com/in/allaa-eddine-riad-amiar/'}
-            target="_blank"
-          >
-            <FaLinkedin className="w-8 h-8 md:w-10 md:h-10 hover:cursor-pointer text-white" />
-          </Link>
-        </div>
-        <MouseScroll />
-      </div>
-      <div
-        id="stack"
-        className="w-full h-screen bg-cover
-      flex flex-col justify-center items-center gap-32 text-white"
-      >
-        <h1 className="text-2xl md:text-4xl lg:text-4xl xl:text-7xl font-bold font-sans ">
-          Stack
-        </h1>
-        <div className="w-2/3 flex flex-wrap justify-center items-center gap-5">
-          <Image
-            src={JavascriptIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-20 lg:h-20 xl:w-24 xl:h-24"
-          />
-          <Image
-            src={TypescriptIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-          <Image
-            src={ReactIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-          <Image
-            src={NextIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-16 md:h-16 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-          <Image
-            src={TailwindIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-          {/* <Image
-            src={SassIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-16 h-16 md:w-24 md:h-24"
-          /> */}
-          <Image
-            src={NodeIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-          <Image
-            src={FirebaseIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-          <Image
-            src={MongoDbIcon}
-            alt="javascript"
-            width={100}
-            height={100}
-            quality={100}
-            unoptimized
-            priority
-            className="w-10 h-10 md:w-14 md:h-14 lg:w-18 lg:h-18 xl:w-24 xl:h-24"
-          />
-        </div>
-      </div>
-      <div
-        id="projects"
-        className="w-full min-h-screen bg-cover
-        flex flex-col justify-center items-center gap-10 py-20"
-      >
-        <h1 className="text-2xl md:text-4xl lg:text-4xl xl:text-7xl font-bold font-sans text-white">
-          Projects
-        </h1>
-        <p className="text-white text-xl font-semibold">Websites</p>
-        <div className="w-auto h-auto flex flex-wrap justify-center items-center gap-16">
-          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
-            <CardHeader>
-              {/* <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription> */}
-              <Image
-                src={BenyankomThumbnail}
-                alt="benyankom"
-                width={100}
-                height={100}
-                unoptimized
-                priority
-                className="w-full h-52"
-              />
-            </CardHeader>
-            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
-              <div className="w-full h-10 flex justify-between items-center">
-                <p className="text-2xl text-white font-bold">Benyankom</p>
-                <Link
-                  href={'https://benyankom.com'}
-                  target="_blank"
-                  className="w-auto h-8 flex justify-center items-center gap-2
-                hover:cursor-pointer text-white hover:bg-white hover:text-black rounded-xl px-2"
-                >
-                  <p className="">visit</p>
-                  <MdInsertLink className="w-8 h-8 " />
-                </Link>
-              </div>
-              <p className="text-md  text-white">
-                A platform to connect clients with skilled craftsmen in Algeria.
-              </p>
-            </CardContent>
-            <CardFooter className="w-full h-auto flex flex-wrap justify-start items-center gap-3">
-              <p className="text-[#fa4d61]">#nextjs</p>
-              <p className="text-[#00BDF9]">#tailwindcss</p>
-              <p className="text-[#05BA79]">#mongodb</p>
-              <p className="text-[#ab6bff]">#fullauth</p>
-            </CardFooter>
-          </Card>
-          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
-            <CardHeader>
-              {/* <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription> */}
-              <Image
-                src={CoStudyThumbnail}
-                alt="costudy"
-                width={100}
-                height={100}
-                unoptimized
-                priority
-                className="w-full h-52"
-              />
-            </CardHeader>
-            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
-              <div className="w-full h-10 flex justify-between items-center">
-                <p className="text-2xl text-white font-bold">CoSutdy</p>
-                <Link
-                  href={'https://costudy-flame.vercel.app/'}
-                  target="_blank"
-                  className="w-auto h-8 flex justify-center items-center gap-2
-                hover:cursor-pointer  text-white hover:bg-white hover:text-black rounded-xl px-2"
-                >
-                  <p className="">visit</p>
-                  <MdInsertLink className="w-8 h-8 " />
-                </Link>
-              </div>
-              <p className="text-md  text-white">
-                A platform that let students study together in a shared session.
-              </p>
-            </CardContent>
-            <CardFooter className="w-full h-auto flex flex-wrap justify-start items-center gap-3">
-              <p className="text-[#fa4d61]">#nextjs</p>
-              <p className="text-[#00BDF9]">#tailwindcss</p>
-              <p className="text-[#05BA79]">#mongodb</p>
-              <p className="text-[#ab6bff]">#fullauth</p>
-            </CardFooter>
-          </Card>
-        </div>
-        <p className="text-white text-xl font-semibold">Apps</p>
-        <div className="w-auto h-auto flex flex-wrap justify-center items-center gap-16">
-          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
-            <CardHeader>
-              {/* <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription> */}
-              <Image
-                src={BenyankomAppThumbnail}
-                alt="benyankom app"
-                width={100}
-                height={100}
-                unoptimized
-                priority
-                className="w-full h-48 object-contain bg-white rounded-xl"
-              />
-            </CardHeader>
-            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
-              <div className="w-full h-10 flex justify-between items-center">
-                <p className="text-2xl text-white font-bold">Benyankom App</p>
-                <Link
-                  href={
-                    'https://play.google.com/store/apps/details?id=com.benyankom.app&pli=1'
-                  }
-                  target="_blank"
-                  className="w-auto h-8 flex justify-center items-center gap-2
-                hover:cursor-pointer text-white hover:bg-white hover:text-black rounded-xl px-2"
-                >
-                  <p className="">visit</p>
-                  <MdInsertLink className="w-8 h-8 " />
-                </Link>
-              </div>
-              <p className="text-md  text-white">
-                An App to connect clients with skilled craftsmen in Algeria.
-              </p>
-            </CardContent>
-            <CardFooter className="w-full h-auto flex  flex-wrap justify-start items-center gap-3">
-              <p className="text-[#fa4d61]">#reactnative</p>
-              <p className="text-[#00BDF9]">#nativewind</p>
-              <p className="text-[#ab6bff]">#fullauth</p>
-            </CardFooter>
-          </Card>
-          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
-            <CardHeader>
-              {/* <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription> */}
-              <Image
-                src={WinakolAppThumbnail}
-                alt="Winakol"
-                width={100}
-                height={100}
-                unoptimized
-                priority
-                className="w-full h-48 object-contain bg-white rounded-xl"
-              />
-            </CardHeader>
-            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
-              <div className="w-full h-10 flex justify-between items-center">
-                <p className="text-2xl text-white font-bold">Winakol</p>
-                <Link
-                  href={
-                    'https://play.google.com/store/apps/details?id=com.winnakol.app'
-                  }
-                  target="_blank"
-                  className="w-auto h-8 flex justify-center items-center gap-2
-                hover:cursor-pointer  text-white hover:bg-white hover:text-black rounded-xl px-2"
-                >
-                  <p className="">visit</p>
-                  <MdInsertLink className="w-8 h-8 " />
-                </Link>
-              </div>
-              <p className="text-md  text-white">
-                An app that let users browse through thousands of restaurants
-                and dishes.
-              </p>
-            </CardContent>
-            <CardFooter className="w-full h-10 flex justify-start items-center gap-3">
-              <p className="text-[#fa4d61]">#reactnative</p>
-              <p className="text-[#00BDF9]">#nativewind</p>
-              <p className="text-[#ab6bff]">#fullauth</p>
-            </CardFooter>
-          </Card>
-        </div>
-        <p className="text-white text-xl font-semibold">Libraries</p>
-        <div className="w-auto h-auto flex flex-wrap justify-center items-center gap-16">
-          <Card className="bg-[#202020] w-4/5 max-w-[23rem] md:w-[23rem] h-auto border-none rounded-3xl">
-            <CardHeader>
-              {/* <CardTitle>Card Title</CardTitle>
-              <CardDescription>Card Description</CardDescription> */}
-              <Image
-                src={FullAuthAppThumbnail}
-                alt="fullauth"
-                width={100}
-                height={100}
-                unoptimized
-                priority
-                className="w-full h-48  bg-white rounded-xl"
-              />
-            </CardHeader>
-            <CardContent className="w-full h-auto flex flex-col justify-start items-start gap-3">
-              <div className="w-full h-10 flex justify-between items-center">
-                <p className="text-2xl text-white font-bold">FullAuth</p>
-                <Link
-                  href={'https://full-auth.vercel.app/introduction'}
-                  target="_blank"
-                  className="w-auto h-8 flex justify-center items-center gap-2
-                hover:cursor-pointer text-white hover:bg-white hover:text-black rounded-xl px-2"
-                >
-                  <p className="">visit</p>
-                  <MdInsertLink className="w-8 h-8 " />
-                </Link>
-              </div>
-              <p className="text-md  text-white">
-                An auth library that supports authentication for both web and
-                mobile.
-              </p>
-            </CardContent>
-            <CardFooter className="w-full h-auto flex  flex-wrap justify-start items-center gap-3">
-              <p className="text-[#fa4d61]">#reactnative</p>
-              <p className="text-[#00BDF9]">#nativewind</p>
-              <p className="text-[#ab6bff]">#fullauth</p>
-            </CardFooter>
-          </Card>
-        </div>
-      </div>
-      <div
-        id="contact"
-        className="w-full h-screen bg-cover
-        bg-[url('/contact_bg.svg')]
-        px-12
-        flex flex-col justify-center items-center"
-      >
-        <div
-          className="w-full md:w-auto h-auto flex flex-col justify-start items-center gap-24
-        bg-black bg-opacity-50 p-8 md:p-20 rounded-lg"
-        >
-          <h1 className="text-xl md:text-3xl lg:text-4xl xl:text-7xl font-bold font-sans text-white text-center">
-            {"Let's talk more about your project."}
+        <HeroParallax />
+        <div className="container px-4 md:px-6 relative z-10 text-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight mb-6 animate-fade-in">
+            Hey there!
           </h1>
-
-          <p className="text-transparent bg-clip-text text-md md:text-xl lg:text-2xl xl:text-3xl font-bold inline-block bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 px-2 rounded-full">
-            a.allaaeddine.riad@gmail.com
+          <h2
+            className="text-2xl md:text-3xl lg:text-4xl font-medium mb-4 animate-fade-in"
+            style={{ animationDelay: '0.2s' }}
+          >
+            I am <span className="text-primary">Allaa Eddine</span>
+          </h2>
+          <p
+            className="max-w-[700px] mx-auto text-lg md:text-xl text-gray-300 mb-8 animate-fade-in"
+            style={{ animationDelay: '0.4s' }}
+          >
+            A Full-Stack Developer specializing in Next.js, TypeScript, and
+            Tailwind CSS for crafting efficient and elegant web solutions.
           </p>
-          <div className="w-auto h-10 flex justify-center items-center gap-5">
-            <Link href={'https://github.com/A-AllaaEddine'} target="_blank">
-              <FaGithub className="w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 hover:cursor-pointer text-white" />
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in"
+            style={{ animationDelay: '0.6s' }}
+          >
+            <Button asChild size="lg" className="rounded-full">
+              <Link href="#projects">View My Work</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="rounded-full"
+            >
+              <Link href="#contact">Get In Touch</Link>
+            </Button>
+          </div>
+          <div
+            className="flex justify-center gap-6 mb-12 animate-fade-in"
+            style={{ animationDelay: '0.8s' }}
+          >
+            <Link
+              href="https://github.com/A-AllaaEddine"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              <Github className="h-8 w-8" />
+              <span className="sr-only">GitHub</span>
             </Link>
             <Link
-              href={'https://www.linkedin.com/in/allaa-eddine-riad-amiar/'}
+              href="https://www.linkedin.com/in/allaa-eddine-riad-amiar/"
               target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
             >
-              <FaLinkedin className="w-8 h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 hover:cursor-pointer text-white" />
+              <Linkedin className="h-8 w-8" />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
+            <Link
+              href="mailto:a.allaaeddine.riad@gmail.com"
+              className="hover:text-primary transition-colors"
+            >
+              <Mail className="h-8 w-8" />
+              <span className="sr-only">Email</span>
             </Link>
           </div>
+          <div className="absolute bottom-[-50px] left-1/2 transform -translate-x-1/2 animate-bounce">
+            <ArrowDown className="h-8 w-8" />
+          </div>
         </div>
-      </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 bg-background">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-center mb-12">
+            About Me
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative aspect-square overflow-hidden rounded-3xl">
+              <Image
+                src={ProfileImage}
+                alt="Allaa Eddine"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h3 className="text-2xl font-medium mb-4">
+                Full-Stack Developer
+              </h3>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                I'm passionate about creating seamless digital experiences that
+                combine elegant design with powerful functionality. With
+                expertise in modern web technologies, I build solutions that are
+                not only visually appealing but also performant and scalable.
+              </p>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                My approach focuses on user-centered design principles, ensuring
+                that every project I work on delivers exceptional value to both
+                clients and end-users.
+              </p>
+              <Button asChild variant="outline" className="rounded-full">
+                <Link href="https://drive.google.com/file/d/1BC727-Z_R-5LLefRrQSFbcuFhlvcgSjf/view?usp=sharing">
+                  View Resume
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section
+        id="stack"
+        className="py-20 bg-gradient-to-b from-background to-black/50"
+      >
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-center mb-12">
+            My Tech Stack
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <SkillCard name="Next.js" icon={NextIcon} />
+            <SkillCard name="React" icon={ReactIcon} />
+            <SkillCard name="TypeScript" icon={TypescriptIcon} />
+            <SkillCard name="Tailwind CSS" icon={TailwindIcon} />
+            <SkillCard name="Node.js" icon={NodeIcon} />
+            <SkillCard name="MongoDB" icon={MongoDbIcon} />
+            <SkillCard name="Firebase" icon={FirebaseIcon} />
+            <SkillCard name="Docker" icon={DockerIcon} />
+            <SkillCard name="React Native" icon={ReactNativeIcon} />
+            <SkillCard name="Vercel" icon={VercelIcon} />
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 bg-black/50">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-center mb-12">
+            Personal Projects
+          </h2>
+          <ProjectFilter />
+          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div> */}
+        </div>
+      </section>
+
+      {/* Client Work Section */}
+      <section id="client-work" className="py-20 bg-background">
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-center mb-12">
+            Client Work / Freelance
+          </h2>
+          <div className="space-y-16">
+            <ClientProjectCard
+              title="StayFinder"
+              client="TravelTech Startup"
+              description="A sleek, high-performance platform designed to help users discover and book top-rated hotels effortlessly. Built with scalability and mobile-first usability in mind."
+              image={StayFinderThumbnail}
+              technologies={['Next.js', 'MongoDB', 'Tailwind CSS', 'FullAuth']}
+              results={[
+                '35% increase in hotel bookings within 3 months of launch',
+                '50% growth in mobile user engagement',
+                '20% increase in repeat bookings through personalized user experience',
+              ]}
+              testimonial={{
+                text: 'Working with Allaa was a game-changer. The new site is not only beautiful but incredibly fast and intuitive. Our customers love it, and we’ve seen a clear uptick in both engagement and revenue.',
+                author: 'Hadjer, CEO',
+              }}
+            />
+
+            <ClientProjectCard
+              title="FlavourFind"
+              client="Food Discovery Platform"
+              description="A dynamic web app that helps foodies explore top-rated restaurants and individual dishes in their area. Built for high performance, real-time reviews, and a seamless user experience on all devices."
+              image={FlavourFindThumbnail}
+              technologies={['Next.js', 'MongoDB', 'Tailwind CSS', 'FullAuth']}
+              results={[
+                '45% increase in user engagement through dish-level ratings',
+                '60% more return visits due to personalized recommendations',
+                'Doubled partner restaurant sign-ups within the first 2 months',
+              ]}
+              testimonial={{
+                text: 'Allaa delivered exactly what we needed—a fast, intuitive, and visually appealing platform that our users love. Our traffic and restaurant partnerships have grown significantly since launch.',
+                author: 'Danny, Head of Product',
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        id="contact"
+        className="py-20 bg-gradient-to-b from-black/50 to-background"
+      >
+        <div className="container px-4 md:px-6">
+          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-center mb-12">
+            Get In Touch
+          </h2>
+          <div className="max-w-2xl mx-auto">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

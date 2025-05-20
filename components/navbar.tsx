@@ -1,62 +1,153 @@
 'use client';
 
+import type React from 'react';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Menu, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
-const Navbar = () => {
+export function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
+
   return (
-    <div
-      className="fixed font-sans w-full h-14 flex justify-center items-center gap-3 md:gap-5
-    bg-[#100F0F] z-50"
+    <header
+      className={cn(
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        isScrolled ? 'glass py-3' : 'bg-transparent py-5'
+      )}
     >
-      <p
-        className="text-[#A3A3A3] text-sm md:text-xl hover:text-white hover:cursor-pointer"
-        onClick={() => {
-          document
-            .getElementById('top')
-            ?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        Home
-      </p>
-      <p
-        className="text-[#A3A3A3] text-sm md:text-xl hover:text-white hover:cursor-pointer"
-        onClick={() => {
-          document
-            .getElementById('stack')
-            ?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        Stack
-      </p>
-      <p
-        className="text-[#A3A3A3] text-sm md:text-xl hover:text-white hover:cursor-pointer"
-        onClick={() => {
-          document
-            .getElementById('projects')
-            ?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        Projects
-      </p>
-      <p
-        className="text-[#A3A3A3] text-sm md:text-xl hover:text-white hover:cursor-pointer"
-        onClick={() => {
-          document
-            .getElementById('contact')
-            ?.scrollIntoView({ behavior: 'smooth' });
-        }}
-      >
-        Contact
-      </p>
-      <Link
-        href="https://drive.google.com/file/d/1c78hDnlWrdlpF9z93byHvrrq9EpnhsVa/view?usp=sharing"
-        target="_blank"
-        className="text-[#A3A3A3] text-sm md:text-xl hover:text-white hover:cursor-pointer"
-      >
-        Resume
-      </Link>
-    </div>
-  );
-};
+      <div className="container px-4 md:px-6 flex items-center justify-between">
+        <Link href="/" className="text-xl font-medium tracking-tight">
+          Allaa<span className="text-primary">Eddine</span>
+        </Link>
 
-export default Navbar;
+        <nav className="hidden md:flex items-center space-x-10">
+          <NavLink href="#home" onClick={closeMenu}>
+            Home
+          </NavLink>
+          <NavLink href="#about" onClick={closeMenu}>
+            About
+          </NavLink>
+          <NavLink href="#stack" onClick={closeMenu}>
+            Stack
+          </NavLink>
+          <NavLink href="#projects" onClick={closeMenu}>
+            Projects
+          </NavLink>
+          <NavLink href="#client-work" onClick={closeMenu}>
+            Client Work
+          </NavLink>
+          <NavLink href="#contact" onClick={closeMenu}>
+            Contact
+          </NavLink>
+          <Button
+            asChild
+            size="sm"
+            variant="ghost"
+            className="ml-2 rounded-full"
+          >
+            <Link href="https://drive.google.com/file/d/1BC727-Z_R-5LLefRrQSFbcuFhlvcgSjf/view?usp=sharing">
+              Resume
+            </Link>
+          </Button>
+        </nav>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="md:hidden"
+          onClick={toggleMenu}
+        >
+          <Menu className="h-6 w-6" />
+          <span className="sr-only">Toggle menu</span>
+        </Button>
+      </div>
+
+      {/* Mobile menu */}
+      <div
+        className={cn(
+          'fixed inset-0 glass z-50 flex flex-col transition-transform duration-300 md:hidden',
+          isOpen ? 'translate-x-0' : 'translate-x-full'
+        )}
+      >
+        <div className="flex items-center justify-between p-4">
+          <Link
+            href="#home"
+            className="text-xl font-medium tracking-tight"
+            onClick={closeMenu}
+          >
+            Allaa<span className="text-primary">Eddine</span>
+          </Link>
+          <Button variant="ghost" size="icon" onClick={toggleMenu}>
+            <X className="h-6 w-6" />
+            <span className="sr-only">Close menu</span>
+          </Button>
+        </div>
+        <nav className="flex flex-col items-center justify-center flex-1 space-y-8 p-4">
+          <NavLink href="/" onClick={closeMenu}>
+            Home
+          </NavLink>
+          <NavLink href="#about" onClick={closeMenu}>
+            About
+          </NavLink>
+          <NavLink href="#stack" onClick={closeMenu}>
+            Stack
+          </NavLink>
+          <NavLink href="#projects" onClick={closeMenu}>
+            Projects
+          </NavLink>
+          <NavLink href="#client-work" onClick={closeMenu}>
+            Client Work
+          </NavLink>
+          <NavLink href="#contact" onClick={closeMenu}>
+            Contact
+          </NavLink>
+          <Button
+            asChild
+            size="sm"
+            variant="ghost"
+            className="mt-4 rounded-full"
+          >
+            <Link href="/resume" onClick={closeMenu}>
+              Resume
+            </Link>
+          </Button>
+        </nav>
+      </div>
+    </header>
+  );
+}
+
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+function NavLink({ href, children, onClick }: NavLinkProps) {
+  return (
+    <Link
+      href={href}
+      className="text-gray-300 hover:text-white transition-colors relative group"
+      onClick={onClick}
+    >
+      {children}
+      <span className="absolute left-0 right-0 bottom-0 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+    </Link>
+  );
+}
