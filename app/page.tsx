@@ -121,8 +121,8 @@ export default function Home() {
                 Full-Stack Developer
               </h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                I'm passionate about creating seamless digital experiences that
-                combine elegant design with powerful functionality. With
+                I&apos;m passionate about creating seamless digital experiences
+                that combine elegant design with powerful functionality. With
                 expertise in modern web technologies, I build solutions that are
                 not only visually appealing but also performant and scalable.
               </p>
