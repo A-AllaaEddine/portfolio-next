@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Kaden — Full-Stack Developer Portfolio
 
-## Getting Started
+[Open the live portfolio](https://a-allaaeddine.vercel.app/)
 
-First, run the development server:
+This repository contains the source for Kaden's personal portfolio and selected engineering case studies. The site presents open-source work, independent products, and client-facing projects; some client source repositories remain private.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Technology
+
+- Next.js 15 with the App Router
+- React 18 and TypeScript
+- Tailwind CSS, Radix UI, and Framer Motion
+- `next-themes` for light, dark, and system appearance
+
+## Main features
+
+- Responsive portfolio homepage with profile, selected work, and contact sections.
+- Project explorer with filters for all projects, client work, web, mobile, and library projects.
+- Case-study pages at `/projects/[slug]`, with project context, contributions, technology, constraints, and approved gallery assets.
+- Résumé download and email contact link. The contact action opens the visitor's email client; this site does not collect or store messages.
+- Page metadata, sitemap, and robots route.
+
+## Representative case-study visual
+
+The portfolio already publishes this approved FullAuth project image in its case-study gallery:
+
+![FullAuth case-study visual](https://raw.githubusercontent.com/A-AllaaEddine/portfolio-next/main/public/fullauth/approved-home-light.webp)
+
+## Repository structure
+
+```text
+app/                      App Router layout, homepage, sitemap, and project routes
+components/               Portfolio sections, project explorer, navigation, and UI
+lib/projects.ts           Case-study content and project metadata
+lib/site.ts               Shared site origin and metadata helper
+public/                   Public images and static assets
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use Node.js and npm, then run:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm ci
+npm run dev
+```
 
-## Learn More
+Open [http://localhost:3000](http://localhost:3000). To create and serve a production build locally:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The repository's lint script is `npm run lint`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Build and deployment
 
-## Deploy on Vercel
+The live site is hosted at [a-allaaeddine.vercel.app](https://a-allaaeddine.vercel.app/). The project is a standard Next.js application. The existing Vercel project manages preview and production deployments; its build command is `npm run build`. Preserve the existing project settings and production domain.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project boundaries
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The portfolio documents selected contributions and known constraints. Source for private client projects is not included in this repository. FullAuth's case study and public documentation retain its unresolved security and platform limitations.
