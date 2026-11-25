@@ -1,159 +1,28 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import Image, { StaticImageData } from 'next/image';
+import { ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ProjectCard } from '@/components/project-card';
-import { Globe, AppWindow, Code2 } from 'lucide-react';
-
-// Images
 import BenyankomThumbnail from '@/public/Benyankom_thumbnail.png';
-import CoStudyThumbnail from '@/public/CoStudy_thumbnail.png';
-import FullAuthAppThumbnail from '@/public/FullAuth_app_thumbnail.png';
 import BenyankomAppThumbnail from '@/public/Benyankom_app_thumbnail.png';
+import FullAuthAppThumbnail from '@/public/FullAuth_app_thumbnail.png';
 import WinakolAppThumbnail from '@/public/Winakol_app_thumbnail.png';
-import { StaticImageData } from 'next/image';
+import CoStudyThumbnail from '@/public/CoStudy_thumbnail.png';
 
-// Define project types
-type ProjectType = 'all' | 'website' | 'app' | 'library';
-
-type Project = {
-  id: number;
-  type: ProjectType;
-  title: string;
-  description: string;
-  image: string | StaticImageData;
-  tags: string[];
-  demoUrl: string;
-  githubUrl?: string;
-  featured?: boolean;
-};
-// Sample project data
+type Kind = 'Client work' | 'Web' | 'Mobile' | 'Library';
+type Project = { title: string; kind: Kind; description: string; image: StaticImageData; tags: string[]; href?: string; label?: string };
 const projects: Project[] = [
-  {
-    id: 1,
-    type: 'website',
-    title: 'Benyankom',
-    description:
-      'A platform to connect clients with skilled craftsmen in Algeria',
-    image: BenyankomThumbnail,
-    tags: ['Next.js', 'MongoDB', 'Tailwind CSS', 'FullAuth'],
-    demoUrl: 'https://benyankom.vercel.app',
-    // githubUrl: 'https://github.com/a-allaaeddine/portfolio',
-  },
-  {
-    id: 2,
-    type: 'website',
-    title: 'CoSutdy',
-    description:
-      'A platform that let students study together in a shared session',
-    image: CoStudyThumbnail,
-    tags: ['Next.js', 'MongoDB', 'Tailwind CSS', 'NextAuth'],
-    demoUrl: 'https://costudy-flame.vercel.appp',
-    githubUrl: 'https://github.com/A-AllaaEddine/costudy-nextjs',
-  },
-  {
-    id: 3,
-    type: 'app',
-    title: 'Benyankom App',
-    description: 'An App to connect clients with skilled craftsmen in Algeria',
-    image: BenyankomAppThumbnail,
-    tags: ['React Native', 'NativeWind', 'FullAuth'],
-    demoUrl:
-      'https://play.google.com/store/apps/details?id=com.benyankom.app&pli=1',
-    // githubUrl: 'https://github.com/a-allaaeddine/tasks',
-  },
-  {
-    id: 4,
-    type: 'app',
-    title: 'Winakol',
-    description:
-      'An app that let users browse through thousands of restaurants and dishes',
-    image: WinakolAppThumbnail,
-    tags: ['React Native', 'NativeWind', 'FullAuth'],
-    demoUrl: 'https://play.google.com/store/apps/details?id=com.winnakol.app',
-    githubUrl: 'https://github.com/A-AllaaEddine/winnakol-app',
-  },
-  {
-    id: 5,
-    type: 'library',
-    title: 'FullAuth',
-    description:
-      ' An auth library that supports authentication for both web and mobile',
-    image: FullAuthAppThumbnail,
-    tags: ['TypeScript', 'Next.js', 'React Native', 'OAuth'],
-    demoUrl: 'https://full-auth.vercel.app/introduction',
-    githubUrl: 'https://github.com/A-AllaaEddine/fullauth',
-    featured: true,
-  },
+  { title: 'FullAuth', kind: 'Library', description: 'A reusable authentication toolkit with a TypeScript core, credential and Google provider modules, JWT and session utilities, plus integrations for Next.js, React, and React Native.', image: FullAuthAppThumbnail, tags: ['TypeScript', 'Next.js', 'React Native'], href: 'https://github.com/A-AllaaEddine/fullauth', label: 'Public source' },
+  { title: 'Benyankom', kind: 'Client work', description: 'A marketplace connecting customers with craftsmen in Algeria, presented across its web and mobile experiences.', image: BenyankomThumbnail, tags: ['Next.js', 'MongoDB', 'React Native', 'FullAuth'], label: 'Client project' },
+  { title: 'Benyankom Mobile', kind: 'Mobile', description: 'The mobile experience for the Benyankom marketplace, connecting customers and craftsmen.', image: BenyankomAppThumbnail, tags: ['React Native', 'NativeWind', 'FullAuth'], href: 'https://play.google.com/store/apps/details?id=com.benyankom.app', label: 'Google Play' },
+  { title: 'Winakol', kind: 'Mobile', description: 'Restaurant discovery with restaurant-level and dish-level ratings.', image: WinakolAppThumbnail, tags: ['React Native', 'Expo'], href: 'https://play.google.com/store/apps/details?id=com.winnakol.app', label: 'Google Play' },
+  { title: 'CoStudy', kind: 'Web', description: 'A study collaboration concept for students to work together in shared sessions.', image: CoStudyThumbnail, tags: ['Next.js', 'MongoDB'], href: 'https://github.com/A-AllaaEddine/costudy-nextjs', label: 'Source' },
 ];
+const filters = ['All', 'Client work', 'Web', 'Mobile', 'Library'] as const;
 
 export function ProjectFilter() {
-  const [filter, setFilter] = useState<ProjectType>('all');
-
-  const filteredProjects = projects.filter((project) =>
-    filter === 'all' ? true : project.type === filter
-  );
-
-  return (
-    <div>
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
-        <Button
-          onClick={() => setFilter('all')}
-          variant={filter === 'all' ? 'default' : 'outline'}
-          className="rounded-full font-medium"
-        >
-          All Projects
-        </Button>
-        <Button
-          onClick={() => setFilter('website')}
-          variant={filter === 'website' ? 'default' : 'outline'}
-          className="rounded-full font-medium flex items-center gap-2"
-        >
-          <Globe className="h-4 w-4" />
-          Websites
-        </Button>
-        <Button
-          onClick={() => setFilter('app')}
-          variant={filter === 'app' ? 'default' : 'outline'}
-          className="rounded-full font-medium flex items-center gap-2"
-        >
-          <AppWindow className="h-4 w-4" />
-          Applications
-        </Button>
-        <Button
-          onClick={() => setFilter('library')}
-          variant={filter === 'library' ? 'default' : 'outline'}
-          className="rounded-full font-medium flex items-center gap-2"
-        >
-          <Code2 className="h-4 w-4" />
-          Libraries
-        </Button>
-      </div>
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={filter}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              tags={project.tags}
-              demoUrl={project.demoUrl}
-              githubUrl={project.githubUrl ? project.githubUrl : ''}
-              featured={project.featured}
-            />
-          ))}
-        </motion.div>
-      </AnimatePresence>
-    </div>
-  );
+  const [filter, setFilter] = useState<(typeof filters)[number]>('All');
+  const visible = useMemo(() => filter === 'All' ? projects : projects.filter(p => p.kind === filter), [filter]);
+  return <div><div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter projects">{filters.map(f=><Button key={f} type="button" onClick={()=>setFilter(f)} aria-pressed={filter===f} variant={filter===f?'default':'outline'} className="rounded-full">{f}</Button>)}</div><div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">{visible.map(p=><article key={p.title} className="group overflow-hidden rounded-3xl border border-white/10 bg-white/[.025] transition hover:-translate-y-1 hover:border-orange-400/50"><div className="relative aspect-[16/10] overflow-hidden"><Image src={p.image} alt={`${p.title} project preview`} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover transition duration-500 group-hover:scale-[1.03]" /></div><div className="p-6"><div className="flex justify-between gap-3"><h3 className="text-xl font-semibold">{p.title}</h3><span className="font-mono text-xs text-orange-300">{p.kind}</span></div><p className="mt-3 min-h-[6rem] text-sm leading-6 text-zinc-400">{p.description}</p><div className="mt-4 flex flex-wrap gap-2">{p.tags.map(t=><span key={t} className="rounded-full border border-white/10 px-2.5 py-1 text-xs text-zinc-300">{t}</span>)}</div><div className="mt-6 border-t border-white/10 pt-4">{p.href?<a href={p.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-orange-300 hover:text-orange-200">{p.label}<ArrowUpRight size={15}/></a>:<span className="text-sm text-zinc-500">{p.label} · source private</span>}</div></div></article>)}</div><p className="mt-7 text-sm text-zinc-500">Client source repositories are private. No demos are linked unless the destination is known.</p></div>;
 }

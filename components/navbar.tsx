@@ -61,9 +61,7 @@ export function Navbar() {
             variant="ghost"
             className="ml-2 rounded-full"
           >
-            <Link href="https://drive.google.com/file/d/1BC727-Z_R-5LLefRrQSFbcuFhlvcgSjf/view?usp=sharing">
-              Resume
-            </Link>
+            <a href="/resume/AMIAR_ALLAA_EDDINE_RIAD_Full_Stack_CV.pdf" download>Resume</a>
           </Button>
         </nav>
 
@@ -123,9 +121,9 @@ export function Navbar() {
             variant="ghost"
             className="mt-4 rounded-full"
           >
-            <Link href="/resume" onClick={closeMenu}>
+            <a href="/resume/AMIAR_ALLAA_EDDINE_RIAD_Full_Stack_CV.pdf" download onClick={closeMenu}>
               Resume
-            </Link>
+            </a>
           </Button>
         </nav>
       </div>
