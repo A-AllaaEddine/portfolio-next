@@ -28,7 +28,7 @@ export function PortfolioHome() {
           <p className="hero-intro-small">Selected freelance work · open-source engineering · independent products</p>
           <div className="hero-socials" aria-label="Contact links">
             <a href="https://github.com/A-AllaaEddine" target="_blank" rel="noreferrer" aria-label="GitHub"><Github size={18}/></a>
-            <a href="https://www.linkedin.com/in/allaa-eddine-riad-amiar/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18}/></a>
+            <a href="https://www.linkedin.com/in/a-allaaeddine/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><Linkedin size={18}/></a>
             <a href="mailto:a.allaaeddine.riad@gmail.com" aria-label="Email"><Mail size={18}/></a>
           </div>
         </div>
@@ -55,7 +55,7 @@ export function PortfolioHome() {
     <footer className="site-footer page-wrap">
       <Link className="footer-wordmark" href="/">Kaden</Link>
       <span>Full-Stack Developer · Web &amp; Mobile Applications</span>
-      <div><a href="https://github.com/A-AllaaEddine" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/allaa-eddine-riad-amiar/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:a.allaaeddine.riad@gmail.com">Email</a></div>
+      <div><a href="https://github.com/A-AllaaEddine" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/a-allaaeddine/" target="_blank" rel="noreferrer">LinkedIn</a><a href="mailto:a.allaaeddine.riad@gmail.com">Email</a></div>
       <small>© {new Date().getFullYear()} Kaden</small>
     </footer>
   </main>;

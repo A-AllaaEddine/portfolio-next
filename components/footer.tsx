@@ -30,7 +30,7 @@ export function Footer() {
                 <span className="sr-only">GitHub</span>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/allaa-eddine-riad-amiar/"
+                href="https://www.linkedin.com/in/a-allaaeddine/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors"
